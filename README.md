@@ -60,11 +60,16 @@ You can run the application, by open the following file presented in the _root_ 
 
 Instructions (also available in the _canvas_ of the application):
 
-1) Use **_'Q'_** and **_'A'_** keys dive/emerge. Use **_click/drag/release_** in the **_canvas_** to move center point
+1) Choose the pretended **_Visualization Options_** (_Wired Draw_, or _Z-Buffer/Depth Test Method_ and _Back Face Culling_ for _Visibility Depth Control_) for the current **_3D Geometric Solid_** in use
 
-2) Choose the current **_Fractal's Set_** in use (**_Benoit Mandelbrot_** or **_Gaston Julia_**)
+2) Choose the current **_3D Geometric Solid_** in use from the available (_Cube_, _Sphere_, _Quadrangular Pyramid_, _Torus_, _Cone_ and _Cylinder_)
 
-3) Choose also the current **_Factor_** to the **_Scale_** of the current **_Fractal_** in use
+3) Choose the current **_3D Projection_** in use from the available (_Oblique_, _Axonometric_ and _Perspective_) and their _settings/adjustments_
+
+4) Choose a **_custom color_** for the **_3D Geometric Solid_** in use, by adjusting the _colors' factors_
+
+5) Upload **_custom Vertex/Fragment Shaders_**, to see the **_3D Geometric Solid_** in use, _painted_ and _iluminated_, in other ways
+
 
 #### Notes (IMPORTANT)
 1) It's **_mandatory_** to have the folder called **_common_** in the local repository, because it's where are the necessary **_WebGL utilities_**, **_geometric/solid figures_** and **_other libraries_**
