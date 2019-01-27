@@ -1,0 +1,90 @@
+/*
+
+FCT NOVA | FCT-UNL (Faculty of Sciences and Technology of New University of Lisbon)
+Integrated Master (BSc./MSc.) of Computer Engineering
+
+Computer Graphics and Interfaces (2016-2017)
+
+Lab Work 2 - 3D Object Viewer - Geometric Solids
+
+Daniel Filipe Pimenta - no. 45404 - d.pimenta@campus.fct.unl.pt
+Ruben André Barreiro - no. 42648 - r.barreiro@campus.fct.unl.pt
+
+*/
+
+html, body, #singlepagecontainer {
+    width: 100%;
+    min-height: 100%;
+    height: 100%;
+	  margin: 0px;
+	  padding: 0px;
+}
+
+body {
+  color: #000;
+  font-family:Tahoma;
+  font-size:13px;
+  font-weight: bold;
+  overflow: hidden;
+  background-color: #000000;
+  background-image: url("imgs/background.jpg");
+}
+
+#viewarea {
+	width: 67%;
+	min-height: 100%; /* I had only this */
+	height: 100%; /* Instead of this... oops */
+	background-color: yellow;
+  float: right;
+}
+
+#gl-canvas {
+    width: 100%;
+    height: 100%;
+}
+
+#interfacearea {
+    width: 33%;
+    height: 100%;
+    float: left;
+}
+
+#workDescription {
+  background:#eeeeee;
+  position: absolute;
+  left: 20px; top: 8px;
+  padding:0;
+  margin:0;
+  overflow:hidden;
+  width: 31%;
+  border-radius: 5px;
+  text-align: center;
+}
+
+#authorsInfo {
+  background:#eeeeee;
+  position: absolute;
+  left: 20px; top: 128px;
+  padding:0;
+  margin:0;
+  overflow:hidden;
+  width: 31%;
+  border-radius: 5px;
+  text-align: center;
+}
+
+#settings {
+  background:#eeeeee;
+  position: absolute;
+  left: 20px; top: 240px;
+  padding:0;
+  margin:0;
+  overflow:hidden;
+  width: 31%;
+  border-radius: 5px;
+  text-align: center;
+}
+
+a {
+  color: #35b0ab;
+}

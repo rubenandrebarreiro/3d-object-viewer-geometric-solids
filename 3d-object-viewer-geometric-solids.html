@@ -1,0 +1,238 @@
+<!-- FCT NOVA | FCT-UNL (Faculty of Sciences and Technology of New University of Lisbon) -->
+<!-- Integrated Master (BSc./MSc.) of Computer Engineering -->
+
+<!-- Computer Graphics and Interfaces (2016-2017) -->
+
+<!-- Lab Work 2 - 3D Object Viewer - Geometric Solids -->
+
+<!-- Daniel Filipe Pimenta - no. 45404 - d.pimenta@campus.fct.unl.pt -->
+<!-- Ruben André Barreiro - no. 42648 - r.barreiro@campus.fct.unl.pt -->
+
+<!DOCTYPE html>
+<html>
+    <head>
+
+        <link rel="shortcut icon" type="image/x-icon" href="https://raw.githubusercontent.com/rubenandrebarreiro/rubenandrebarreiro.github.io/master/assets/images/javascript-logo-1.png"/>
+
+        <link rel="stylesheet" type="text/css" href="3d-object-viewer-geometric-solids.css">
+
+        <script id="vertex-shader-1" type="x-shader/x-vertex">
+        attribute vec4 vPosition;
+        attribute vec4 vColor;
+        attribute vec3 vNormal;
+        uniform mat4 mProjection;
+        uniform mat4 mModelView;
+        uniform mat4 mNormals;
+        uniform float red;
+        uniform float green;
+        uniform float blue;
+        varying vec4 fColor;
+
+        void main() {
+            gl_Position = mProjection * mModelView * vPosition;
+            float r = max(red, vPosition.x);
+            float g = max(green, vPosition.y);
+            float b = max(blue, vPosition.z);
+            fColor = vec4(r,g,b,1.0);
+        }
+        </script>
+
+        <script id="fragment-shader-1" type="x-shader/x-fragment">
+        precision mediump float;
+        varying vec4 fColor;
+
+        void main() {
+           gl_FragColor = fColor;
+        }
+        </script>
+
+        <script id="vertex-shader-2" type="x-shader/x-vertex"></script>
+        <script id="fragment-shader-2" type="x-shader/x-fragment"></script>
+        <script type="text/javascript" src="common/webgl-utils.js"></script>
+        <script type="text/javascript" src="common/initShaders.js"></script>
+        <script type="text/javascript" src="common/MV.js"></script>
+        <script type="text/javascript" src="common/cube.js"></script>
+        <script type="text/javascript" src="common/sphere.js"></script>
+        <script type="text/javascript" src="common/quadPyramid.js"></script>
+        <script type="text/javascript" src="common/torus.js"></script>
+        <script type="text/javascript" src="common/cone.js"></script>
+        <script type="text/javascript" src="common/cylinder.js"></script>
+        <script type="text/javascript" src="3d-object-viewer-geometric-solids.js"></script>
+
+    </head>
+    <body>
+       <title>3D Object Viewer - Geometric Solids</title>
+       <div id="singlepagecontainer">
+            <div id="workDescription">
+              <h5>
+                <a href="https://www.fct.unl.pt/en/education/course/integrated-master-computer-science">
+                  Computer Science and Engineering Integrated Master
+                </a>
+              </h5>
+              <h6>
+                @ <a href="https://www.fct.unl.pt/en"><i>FCT NOVA | FCT/UNL (Faculty of Sciences and Technology of New University of Lisbon)</i></a>
+              </h6>
+
+              <h6>
+                <a href="http://www.unl.pt/guia/2018/fct/UNLGI_getUC?uc=8150">Computer Graphics and Interfaces</a>
+                &nbsp;
+                (2016/2017)
+                &nbsp; - &nbsp;
+                Lab Work 2 (3D Object Viewer - Geometric Solids)
+              </h6>
+            </div>
+
+            <div id="authorsInfo">
+                <h5>
+                  Authors/Contributors
+                </h5>
+                <h6>
+                  <u><i>R&uacute;ben Andr&eacute; Barreiro</i></u> - no. 42648 (<a href="mailto:r.barreiro@campus.fct.unl.pt">r.barreiro@campus.fct.unl.pt</a>)
+                  </br>
+                  </br>
+                  <u><i>Daniel Filipe Pimenta</i></u> - no. 45404 (<a href="mailto:d.pimenta@campus.fct.unl.pt">d.pimenta@campus.fct.unl.pt</a>)
+                </h6>
+            </div>
+
+            <div id="settings">
+                <h5>
+                  Settings/Adjustments
+                </h5>
+                <h6>
+                    <u><i>Visualization Options</i></u>
+                    </br>
+                    </br>
+                    Wired Draw <input type="checkbox" id="wireDraw">
+                    &nbsp;|&nbsp;
+
+                    Z-Buffer / Depth Test Method <input type="checkbox" id="zBuffer" value="zBuffer">
+
+                    &nbsp;|&nbsp;
+
+                    Back Face Culling Method
+                    <input type="checkbox" id="backFaceCulling" value="backFaceCulling">
+                </h6>
+
+                <hr/>
+
+                <h6>
+                  <u><i>Geometric Solids Available</i></u>
+                  </br>
+                  </br>
+                  <select id="obj">
+                    <option> Cube </option>
+                    <option> Sphere </option>
+                    <option> Quadrangular Pyramid </option>
+                    <option> Torus </option>
+                    <option> Cone </option>
+                    <option> Cylinder </option>
+                  </select>
+                </h6>
+
+                <hr/>
+
+                <h6>
+                  <u><i>Current Projection in Use</i></u>
+                  </br>
+                  </br>
+                  <select id="prj">
+                    <option> Oblique </option>
+                    <option> Axonometric </option>
+                    <option> Perspective </option>
+                  </select>
+
+                  </br>
+                  </br>
+                  </br>
+
+                  <div id="obliquePrj">
+                      Foreshorten Ratio
+                      </br>
+                      <input id="fRatio" type="range" min="0.0" max="1.0" step="0.05" value="1.0">
+                      </br>
+                      Angle
+                      </br>
+                      <input id="oblAngle" type="range" min="0" max="360" step="0.01" value="45">
+                      </br>
+                  </div>
+                  <div id="axonometricPrj">
+                      Gamma Angle
+                      </br>
+                      <input id="axoGamma" type="range" min="0" max="360" step="1" value="19.4205368891236">
+                      </br>
+                      Theta Angle
+                      </br>
+                      <input id="axoTheta" type="range" min="0" max="360" step="1" value="339.731932804673">
+                      </br>
+                  </div>
+                  <div id="perspectivePrj">
+                      Vanishing Point
+                      </br>
+                      <input id="persPoint" type="range" min="1.0" max="10.0" step="0.05" value="5.0">
+                      </br>
+                  </div>
+                </h6>
+
+                <hr/>
+
+                <h6>
+                  <u><i>Current Color in Use</i></u>
+                </h6>
+
+                <h6>
+                  <font color="red"><b>Red</b></font>
+                  </br>
+                  <input id="redFactor" type="range" min="0.0" max="1.0" step="0.05" value="0.0">
+                  </br>
+                  <font color="green"><b>Green</b></font>
+                  </br>
+                  <input id="greenFactor" type="range" min="0.0" max="1.0" step="0.05" value="0.0">
+                  </br>
+                  <font color="blue"><b>Blue</b></font>
+                  </br>
+                  <input id="blueFactor" type="range" min="0.0" max="1.0" step="0.05" value="0.0">
+                </h6>
+
+                <hr/>
+
+                <h6>
+                  <u><i>Vertex/Fragment Shaders</i></u>
+                </h6>
+
+                <h6>
+                  <div>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    Vertex Shader
+                    &nbsp;&nbsp;
+                    <input type="file" id="vertex">
+                  </div>
+
+                  </br>
+                  </br>
+
+                  <div>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    Fragment Shader
+                    &nbsp;&nbsp;
+                    <input type="file" id="fragment">
+                  </div>
+
+                  </br>
+                  </br>
+
+                  <div>
+                    <input type="button" id="loadBtn" value="Load Shaders">
+                    &nbsp;&nbsp;&nbsp;&nbsp;
+                    <input type="button" id="unloadBtn" value="Unload Shaders">
+                  </div>
+                </h6>
+            </div>
+
+            <div id="viewarea">
+                <canvas id="gl-canvas">
+                    Oops... your browser doesn't support the HTML5 canvas element"
+                </canvas>
+            </div>
+        </div>
+    </body>
+</html>
