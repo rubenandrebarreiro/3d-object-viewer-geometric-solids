@@ -100,7 +100,6 @@ Instructions (also available in the _canvas_ of the application):
 * [d.pimenta@campus.fct.unl.pt](mailto:d.pimenta@campus.fct.unl.pt)
 
 ### Rúben André Barreiro
-#### E-mails
 * [ruben.barreiro.92@gmail.com](mailto:ruben.barreiro.92@gmail.com)
 * [r.barreiro@campus.fct.unl.pt](mailto:r.barreiro@campus.fct.unl.pt)
 * [up201808917@fe.up.pt](mailto:up201808917@fe.up.pt)
