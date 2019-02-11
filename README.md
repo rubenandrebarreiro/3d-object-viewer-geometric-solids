@@ -86,7 +86,7 @@ Instructions (also available in the _canvas_ of the application):
 * [**_HTML (HyperText Markup Language)_**](https://www.w3schools.com/html/)
 * [**_CSS (Cascade Style Sheets)_**](https://www.w3schools.com/css/)
 * [**_JavaScript_**](https://www.w3schools.com/js/)
-* [**_WebGL (Web Graphics Langauage)_**](https://get.webgl.org/)
+* [**_WebGL (Web Graphics Library)_**](https://get.webgl.org/)
 * [**_Atom_**](https://atom.io/)
 * [**_Brackets_**](http://brackets.io/)
 
