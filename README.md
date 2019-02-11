@@ -118,3 +118,9 @@ Instructions (also available in the _canvas_ of the application):
 * [https://github.com/rubenandrebarreiro/](https://github.com/rubenandrebarreiro/)
 * [https://gitlab.com/rubenandrebarreiro/](https://gitlab.com/rubenandrebarreiro/)
 * [https://bitbucket.org/rubenandrebarreiro/](https://bitbucket.org/rubenandrebarreiro/)
+
+
+## Classifications/Final Approval Grades
+
+### Approval Grade of Lab Work
+* 18 of 20
